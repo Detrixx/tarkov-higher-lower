@@ -35,7 +35,6 @@ export const Items = () => {
     })
       .then((r) => r.json())
       .then((data) => {
-        console.log("data returned:", data.data.items);
         setData(data.data.items);
       });
   };
@@ -53,7 +52,7 @@ export const Items = () => {
             <p>{item.shortName}</p>
             <p>{item.avg24hPrice}</p>
             <p>{item.id}</p>
-            {/* Render other item properties as needed */}
+            <img src={`https://assets.tarkov.dev/${item.id}-512.webp`} />
           </div>
         ) : null
       )}
