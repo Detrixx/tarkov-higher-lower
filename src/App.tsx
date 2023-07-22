@@ -1,8 +1,8 @@
 import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { Main } from "./pages/main";
-import { Board } from "./pages/board";
+import { Main } from "./components/main";
+import { Board } from "./components/board";
 
 function App() {
   return (
