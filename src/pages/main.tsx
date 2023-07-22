@@ -4,8 +4,15 @@ import React from "react";
 
 export const Main = () => {
   const [gameProgress, setGameProgress] = useState(false);
-  const [extractedObject, setExtractedObject] = useState(null);
-  const tarkovItems = <Items />;
+  const [extractedObject, setExtractedObject] = useState<{
+    id: number;
+    name: string;
+    shortName: string;
+    avg24hPrice: number;
+    wikiLink: string;
+  } | null>(null);
+
+  const tarkovItems = Items();
 
   const clickHandle = () => {
     setGameProgress(true);
@@ -13,34 +20,34 @@ export const Main = () => {
   };
 
   const extractObject = () => {
-    let tarkovItemsChildren = React.Children.toArray(
-      tarkovItems.props.children
-    );
-    let id = Math.floor(Math.random() * tarkovItemsChildren.length);
-    console.log(id);
-
-    let randomElement = tarkovItemsChildren[id];
-    setExtractedObject(randomElement);
-
-    tarkovItemsChildren.map((child, index) => {
-      if (index === id) {
-        setExtractedObject(child);
-      }
-    });
-    React.Children.forEach(tarkovItemsChildren, (child, index) => {
-      if (index === id) {
-        setExtractedObject(child);
-      }
-    });
+    if (tarkovItems && tarkovItems.length > 0) {
+      let id;
+      do {
+        id = Math.floor(Math.random() * tarkovItems.length);
+      } while (!(tarkovItems[id].avg24hPrice > 0));
+      setExtractedObject(tarkovItems[id]);
+    }
   };
 
-  return !gameProgress ? (
+  return (
     <>
       <button className="ButtonPlay" onClick={clickHandle}>
         PLAY
       </button>
-      {}
-      {extractedObject}
+
+      {extractedObject && (
+        <div>
+          <h2>Jmeno {extractedObject.name}</h2>
+          <p>Short name: {extractedObject.shortName}</p>
+          <p>Avg 24h {extractedObject.avg24hPrice}</p>
+          <p>ID: {extractedObject.id}</p>
+          <a href={extractedObject.wikiLink}>wiki</a>
+          <img
+            src={`https://assets.tarkov.dev/${extractedObject.id}-512.webp`}
+            //alt={extractedObject.name}
+          />
+        </div>
+      )}
     </>
-  ) : null;
+  );
 };
