@@ -12,7 +12,7 @@ interface TarkovItemObject {
 
 export const Main = () => {
   const [gameProgress, setGameProgress] = useState(false);
-  const [id, setId] = useState(0);
+  const [oldId, setOldId] = useState(0);
   const [previousObject, setPreviousObject] = useState<TarkovItemObject | null>(
     null
   );
@@ -26,25 +26,27 @@ export const Main = () => {
     extractObject();
     setGameProgress(true);
   };
-  const randomId = async () => {
+
+  const randomId = () => {
     let id;
     if (tarkovItems && tarkovItems.length > 0) {
       do {
         id = Math.floor(Math.random() * tarkovItems.length);
-      } while (!(tarkovItems[id].avg24hPrice > 0));
-      setId(id);
+      } while (!(tarkovItems[id].avg24hPrice > 0) && id != oldId);
+      return id;
     }
   };
+  const tmpId = randomId();
+  const newId = randomId();
 
   const extractObject = () => {
     if (tarkovItems && tarkovItems.length > 0) {
-      //gameProgress === false && setId();
-      randomId();
-      console.log(id);
-      setPreviousObject(tarkovItems[id]);
-      randomId();
-      console.log(id);
-      setExtractedObject(tarkovItems[id]);
+      gameProgress
+        ? oldId && setPreviousObject(tarkovItems[oldId])
+        : tmpId && setPreviousObject(tarkovItems[tmpId]);
+
+      newId && setExtractedObject(tarkovItems[newId]);
+      newId && setOldId(newId);
     }
   };
 

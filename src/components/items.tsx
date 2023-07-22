@@ -56,19 +56,4 @@ export const Items = () => {
   });
   return extractedData;
 
-  // return (
-  //   <div>
-  //     {data?.map((item) =>
-  //       item.avg24hPrice != 0 ? (
-  //         <div key={item.id}>
-  //           <h2>{item.name}</h2>
-  //           <p>{item.shortName}</p>
-  //           <p>{item.avg24hPrice}</p>
-  //           <p>{item.id}</p>
-  //           <img src={`https://assets.tarkov.dev/${item.id}-512.webp`} />
-  //         </div>
-  //       ) : null
-  //     )}
-  //   </div>
-  // );
 };
