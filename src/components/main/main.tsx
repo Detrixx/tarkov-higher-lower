@@ -57,7 +57,7 @@ export const Main = () => {
   };
 
   return (
-    <>
+    <div className="container">
       {!gameProgress && (
         <button className="ButtonPlay" onClick={handlePlay}>
           PLAY
@@ -75,30 +75,36 @@ export const Main = () => {
 
       {extractedObject && gameProgress && (
         <div className="Item">
-          <h2>Jmeno {extractedObject.name}</h2>
-          <p>Short name: {extractedObject.shortName}</p>
-          <p>Avg 24h {extractedObject.avg24hPrice}</p>
-          <p>ID: {extractedObject.id}</p>
-          <a href={extractedObject.wikiLink}>wiki</a>
+          <div className="Text">
+            <h2>Jmeno {extractedObject.name}</h2>
+            <p>Short name: {extractedObject.shortName}</p>
+            <p>Avg 24h {extractedObject.avg24hPrice}</p>
+            <p>ID: {extractedObject.id}</p>
+            <a href={extractedObject.wikiLink}>wiki</a>
+          </div>
           <img
+            className="ImgItem"
             src={`https://assets.tarkov.dev/${extractedObject.id}-512.webp`}
             alt={extractedObject.name}
           />
         </div>
       )}
       {previousObject && gameProgress && (
-        <div className="PreviousItem">
-          <h2>Jmeno {previousObject.name}</h2>
-          <p>Short name: {previousObject.shortName}</p>
-          <p>Avg 24h {previousObject.avg24hPrice}</p>
-          <p>ID: {previousObject.id}</p>
-          <a href={previousObject.wikiLink}>wiki</a>
+        <div className="Item">
+          <div className="Text">
+            <h2>Jmeno {previousObject.name}</h2>
+            <p>Short name: {previousObject.shortName}</p>
+            <p>Avg 24h {previousObject.avg24hPrice}</p>
+            <p>ID: {previousObject.id}</p>
+            <a href={previousObject.wikiLink}>wiki</a>
+          </div>
           <img
+            className="ImgItem"
             src={`https://assets.tarkov.dev/${previousObject.id}-512.webp`}
             alt={previousObject.name}
           />
         </div>
       )}
-    </>
+    </div>
   );
 };

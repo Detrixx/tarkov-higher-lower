@@ -1,0 +1,21 @@
+body,html{
+    height: 100%;
+    margin:0
+}
+.container{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+.Text {
+    position: absolute;
+  }
+
+.Item {
+    flex: 1;
+  }
+.ImgItem{
+
+    object-fit: contain;
+}
+
