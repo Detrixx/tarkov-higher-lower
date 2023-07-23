@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { Items } from "./items";
+import { Items } from "../items/items";
 import React from "react";
+import ButtonChoice from "../buttons-choice/buttonChoice";
 
 interface TarkovItemObject {
   id: number;
@@ -13,18 +14,23 @@ interface TarkovItemObject {
 export const Main = () => {
   const [gameProgress, setGameProgress] = useState(false);
   const [oldId, setOldId] = useState(0);
+  const [isLost, setIsLost] = useState(false);
   const [previousObject, setPreviousObject] = useState<TarkovItemObject | null>(
     null
   );
-
   const [extractedObject, setExtractedObject] =
     useState<TarkovItemObject | null>(null);
 
   const tarkovItems = Items();
 
-  const clickHandle = () => {
+  const handlePlay = () => {
+    setIsLost(false);
     extractObject();
     setGameProgress(true);
+  };
+  const endGame = () => {
+    setGameProgress(false);
+    setIsLost(true);
   };
 
   const randomId = () => {
@@ -32,7 +38,7 @@ export const Main = () => {
     if (tarkovItems && tarkovItems.length > 0) {
       do {
         id = Math.floor(Math.random() * tarkovItems.length);
-      } while (!(tarkovItems[id].avg24hPrice > 0) && id != oldId);
+      } while (!(tarkovItems[id].avg24hPrice > 0) && id !== oldId);
       return id;
     }
   };
@@ -52,12 +58,23 @@ export const Main = () => {
 
   return (
     <>
-      <button className="ButtonPlay" onClick={clickHandle}>
-        PLAY
-      </button>
+      {!gameProgress && (
+        <button className="ButtonPlay" onClick={handlePlay}>
+          PLAY
+        </button>
+      )}
+      {previousObject && extractedObject && (
+        <ButtonChoice
+          previousObject={previousObject.avg24hPrice}
+          extractedObject={extractedObject.avg24hPrice}
+          handlePlay={handlePlay}
+          endGame={endGame}
+          isLost={isLost}
+        />
+      )}
 
-      {extractedObject && (
-        <div>
+      {extractedObject && gameProgress && (
+        <div className="Item">
           <h2>Jmeno {extractedObject.name}</h2>
           <p>Short name: {extractedObject.shortName}</p>
           <p>Avg 24h {extractedObject.avg24hPrice}</p>
@@ -69,8 +86,8 @@ export const Main = () => {
           />
         </div>
       )}
-      {previousObject && (
-        <div>
+      {previousObject && gameProgress && (
+        <div className="PreviousItem">
           <h2>Jmeno {previousObject.name}</h2>
           <p>Short name: {previousObject.shortName}</p>
           <p>Avg 24h {previousObject.avg24hPrice}</p>
