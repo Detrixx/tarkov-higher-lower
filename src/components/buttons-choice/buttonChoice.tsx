@@ -48,8 +48,10 @@ const ButtonChoice: React.FC<ButtonChoiceProps> = ({
       ) : (
         <>
           <Score score={score} />
-          <button onClick={higherClick}>Higher</button>
-          <button onClick={lowerClick}>Lower</button>
+          <div className="ButtonGame">
+          <button onClick={higherClick} className="Button">Higher</button>
+          <button onClick={lowerClick} className="Button">Lower</button>
+          </div>
         </>
       )}
     </>

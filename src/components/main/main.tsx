@@ -58,29 +58,36 @@ export const Main = () => {
 
   return (
     <div className="container">
-      {!gameProgress && (
-        <button className="ButtonPlay" onClick={handlePlay}>
-          PLAY
-        </button>
-      )}
-      {previousObject && extractedObject && (
-        <ButtonChoice
-          previousObject={previousObject.avg24hPrice}
-          extractedObject={extractedObject.avg24hPrice}
-          handlePlay={handlePlay}
-          endGame={endGame}
-          isLost={isLost}
-        />
-      )}
+      <div className="Button-container">
+        {!gameProgress && (
+          <button className="ButtonPlay Button" onClick={handlePlay}>
+            PLAY
+          </button>
+        )}
+        
+        {previousObject && extractedObject && (
+          <ButtonChoice
+            previousObject={previousObject.avg24hPrice}
+            extractedObject={extractedObject.avg24hPrice}
+            handlePlay={handlePlay}
+            endGame={endGame}
+            isLost={isLost}
+          />
+        )}
+       
+      </div>
 
       {extractedObject && gameProgress && (
         <div className="Item">
           <div className="Text">
-            <h2>Jmeno {extractedObject.name}</h2>
-            <p>Short name: {extractedObject.shortName}</p>
+            <h2 className="TextJmeno">{extractedObject.name}</h2>
+            <p className="Price">{extractedObject.avg24hPrice} ₽</p>
+            {/* <p>Short name: {extractedObject.shortName}</p>
             <p>Avg 24h {extractedObject.avg24hPrice}</p>
-            <p>ID: {extractedObject.id}</p>
-            <a href={extractedObject.wikiLink}>wiki</a>
+             <p>ID: {extractedObject.id}</p>  */}
+            <a href={extractedObject.wikiLink} className="Wiki">
+              wiki
+            </a>
           </div>
           <img
             className="ImgItem"
@@ -92,11 +99,13 @@ export const Main = () => {
       {previousObject && gameProgress && (
         <div className="Item">
           <div className="Text">
-            <h2>Jmeno {previousObject.name}</h2>
-            <p>Short name: {previousObject.shortName}</p>
-            <p>Avg 24h {previousObject.avg24hPrice}</p>
-            <p>ID: {previousObject.id}</p>
-            <a href={previousObject.wikiLink}>wiki</a>
+            <h2 className="TextJmeno">{previousObject.name}</h2>
+            {/* <p>Short name: {previousObject.shortName}</p> */}
+            <p className="Price">{previousObject.avg24hPrice} ₽</p>
+            {/* <p>ID: {previousObject.id}</p> */}
+            <a href={previousObject.wikiLink} className="Wiki">
+              wiki
+            </a>
           </div>
           <img
             className="ImgItem"

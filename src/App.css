@@ -1,21 +1,135 @@
-body,html{
-    height: 100%;
-    margin:0
+html, body {
+  height: 100%; 
+  margin: 0;
+}
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .container{
+    /* height: 100%; */
     display: flex;
     flex-direction: row-reverse;
-    align-items: center;
+     align-items: center; 
 }
-.Text {
-    position: absolute;
-  }
-
 .Item {
     flex: 1;
+    /* height: 100%; */
+  margin: 20px;
+  position: relative;
+  border: solid 1px #19a63c;
+  height: 90vh;
+  width:  95vh;
+
   }
 .ImgItem{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 100%;
+  max-height: 100%;
 
-    object-fit: contain;
+}
+
+.Button-container{
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    position: absolute; 
+    margin-bottom: 40%; 
+    z-index: 1
+    
+
+}
+
+.ButtonPlay{
+    position: absolute;
+}
+.ButtonGame{
+
+}
+.Score{
+
+}
+
+
+.Price{
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #d2cf13;
+    padding: 10px;
+    white-space: nowrap;
+    font-size: 140px;
+    z-index: 1
+}
+
+.TextJmeno {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
+  .Text{
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+
+  .Wiki{
+    position: absolute;
+    top: 99%;
+    left: 98%;
+    transform: translate(-50%, -50%);
+    color: #1316d2;
+    padding: 10px;
+    white-space: nowrap;
+    font-size: 17px;
+    z-index: 1
+
+  }
+
+.Button {
+    width: 150px;
+    height: 100px;
+  align-items: center;
+  appearance: none;
+  background-color: #1af15b;
+  background-image: linear-gradient(1deg, #1af15b, #19a63c 99%);
+  background-size: calc(100% + 20px) calc(100% + 20px);
+  border-radius: 100px;
+  border-width: 0;
+  box-shadow: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: CircularStd,sans-serif;
+  font-size: 1rem;
+  height: auto;
+  justify-content: center;
+  line-height: 1.5;
+  padding: 6px 20px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color .2s,background-position .2s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+.Button:active,
+.Button:focus {
+  outline: none;
+}
+
+.Button:hover {
+  background-position: -20px -20px;
+}
+
+.Button:focus:not(:active) {
+  box-shadow: rgba(40, 255, 108, 0.25) 0 0 0 .125em;
 }
 
