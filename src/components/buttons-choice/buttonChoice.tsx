@@ -41,6 +41,8 @@ const ButtonChoice: React.FC<ButtonChoiceProps> = ({
       setScore(0);
     }
   };
+ 
+
   return (
     <>
       {isLost ? (
