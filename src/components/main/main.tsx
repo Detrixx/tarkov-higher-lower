@@ -57,12 +57,15 @@ export const Main = () => {
   };
 
   return (
+    <>
+    {gameProgress && <div className="circle"><span className="vs-text">VS</span></div>}
     <div className="container">
       <div className="Button-container">
         {!gameProgress && (
           <button className="ButtonPlay Button" onClick={handlePlay}>
             PLAY
           </button>
+          
         )}
         
         {previousObject && extractedObject && (
@@ -85,7 +88,7 @@ export const Main = () => {
             {/* <p>Short name: {extractedObject.shortName}</p>
             <p>Avg 24h {extractedObject.avg24hPrice}</p>
              <p>ID: {extractedObject.id}</p>  */}
-            <a href={extractedObject.wikiLink} className="Wiki">
+            <a href={extractedObject.wikiLink} target="_blank" className="Wiki">
               wiki
             </a>
           </div>
@@ -103,7 +106,7 @@ export const Main = () => {
             {/* <p>Short name: {previousObject.shortName}</p> */}
             <p className="Price">{previousObject.avg24hPrice} ₽</p>
             {/* <p>ID: {previousObject.id}</p> */}
-            <a href={previousObject.wikiLink} className="Wiki">
+            <a href={previousObject.wikiLink} target="_blank" className="Wiki">
               wiki
             </a>
           </div>
@@ -115,5 +118,6 @@ export const Main = () => {
         </div>
       )}
     </div>
+    </>
   );
 };

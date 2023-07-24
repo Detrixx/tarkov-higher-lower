@@ -73,7 +73,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    
+    font-size: 40px;
   }
   .Text{
     color:white;
@@ -98,13 +98,14 @@ body {
     height: 100px;
   align-items: center;
   appearance: none;
+  
   background-color: #1af15b;
   background-image: linear-gradient(1deg, #1af15b, #19a63c 99%);
   background-size: calc(100% + 20px) calc(100% + 20px);
   border-radius: 100px;
   border-width: 0;
   box-shadow: none;
-  box-sizing: border-box;
+  box-sizing: border-box;  
   color: #ffffff;
   cursor: pointer;
   display: inline-flex;
@@ -144,7 +145,34 @@ body {
   top: 35vh;
   right: 42vh ; 
 }
-
+.ButtonGame button{
+  background-color: rgba(0, 0, 0, 0.05);
+  background-image: none;
+  border: solid 3px green;
+}
+.ButtonGame Button:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.circle {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%; /* This makes the element a circle */
+  background-color: rgb(49, 47, 47); /* Optional: Add a background color to fill the circle */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+.vs-text {
+  color: white; /* Optional: Set the text color */
+  font-size: 30px; /* Set the font size */
+  font-weight: bold;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
 
  @media (min-width: 2560px) {
   body {
