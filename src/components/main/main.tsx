@@ -128,7 +128,10 @@ export const Main = () => {
         </div>
 
         {extractedObject && gameProgress && (
-          <div className="Item">
+          <div
+            key={extractedObject.id}
+            className="Item animate__animated animate__fadeInRightBig"
+          >
             <div className="Text">
               <h2 className="TextJmeno">{extractedObject.name}</h2>
               {showPrice && (
@@ -148,14 +151,18 @@ export const Main = () => {
               </a>
             </div>
             <img
-              className="ImgItem animate__animated animate__fadeIn"
+              key={extractedObject.id}
+              className="ImgItem animate__animated animate__zoomInUp"
               src={`https://assets.tarkov.dev/${extractedObject.id}-512.webp`}
               alt={extractedObject.name}
             />
           </div>
         )}
         {previousObject && gameProgress && (
-          <div className="Item">
+          <div
+            key={previousObject.id}
+            className="Item animate__animated animate__fadeInRightBig"
+          >
             <div className="Text">
               <h2 className="TextJmeno">{previousObject.name}</h2>
               {/* <p>Short name: {previousObject.shortName}</p> */}
@@ -172,7 +179,8 @@ export const Main = () => {
               </a>
             </div>
             <img
-              className="ImgItem animate__animated animate__fadeIn"
+              key={previousObject.id}
+              className="ImgItem animate__animated animate__zoomInUp"
               src={`https://assets.tarkov.dev/${previousObject.id}-512.webp`}
               alt={previousObject.name}
             />
