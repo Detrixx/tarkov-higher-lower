@@ -7,6 +7,7 @@ interface ButtonChoiceProps {
   handlePlay: () => void;
   endGame: () => void;
   isLost: boolean;
+  showPrice: boolean;
 }
 
 const ButtonChoice: React.FC<ButtonChoiceProps> = ({
@@ -15,6 +16,7 @@ const ButtonChoice: React.FC<ButtonChoiceProps> = ({
   handlePlay,
   endGame,
   isLost,
+  showPrice,
 }) => {
   // const [isLost, setIsLost] = useState(false);
   const [score, setScore] = useState(0);
@@ -41,7 +43,6 @@ const ButtonChoice: React.FC<ButtonChoiceProps> = ({
       setScore(0);
     }
   };
- 
 
   return (
     <>
@@ -51,8 +52,20 @@ const ButtonChoice: React.FC<ButtonChoiceProps> = ({
         <>
           <Score score={score} />
           <div className="ButtonGame">
-          <button onClick={higherClick} className="Button">Higher ᐃ</button>
-          <button onClick={lowerClick} className="Button">Lower ᐁ</button>
+            <button
+              onClick={higherClick}
+              style={{ display: showPrice ? "none" : "flex" }}
+              className="Button"
+            >
+              Higher ᐃ
+            </button>
+            <button
+              onClick={lowerClick}
+              style={{ display: showPrice ? "none" : "flex" }}
+              className="Button"
+            >
+              Lower ᐁ
+            </button>
           </div>
         </>
       )}

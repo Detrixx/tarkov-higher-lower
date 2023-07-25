@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Items } from "../items/items";
 import React from "react";
 import ButtonChoice from "../buttons-choice/buttonChoice";
@@ -18,19 +18,47 @@ export const Main = () => {
   const [previousObject, setPreviousObject] = useState<TarkovItemObject | null>(
     null
   );
+  const [showPrice, setShowPrice] = useState(false);
   const [extractedObject, setExtractedObject] =
     useState<TarkovItemObject | null>(null);
 
   const tarkovItems = Items();
 
+  useEffect(() => {
+    let timeoutId: NodeJS.Timeout;
+    if (gameProgress) {
+      timeoutId = setTimeout(() => {
+        //setShowPrice(true);
+      }, 1000);
+    }
+
+    return () => {
+      clearTimeout(timeoutId); // Cleanup to avoid memory leaks
+    };
+  }, [gameProgress]);
+
   const handlePlay = () => {
-    setIsLost(false);
-    extractObject();
-    setGameProgress(true);
+    if (!gameProgress) {
+      setIsLost(false);
+      extractObject();
+      setGameProgress(true);
+    }
+    gameProgress && setShowPrice(true);
+    setTimeout(() => {
+      setShowPrice(false);
+      setIsLost(false);
+      extractObject();
+      setGameProgress(true);
+    }, 1500);
   };
+
   const endGame = () => {
-    setGameProgress(false);
-    setIsLost(true);
+    setShowPrice(true);
+    setTimeout(() => {
+      setGameProgress(false);
+      setIsLost(true);
+      setShowPrice(false);
+    }, 1500);
   };
 
   const randomId = () => {
@@ -58,66 +86,79 @@ export const Main = () => {
 
   return (
     <>
-    {gameProgress && <div className="circle"><span className="vs-text">VS</span></div>}
-    <div className="container">
-      <div className="Button-container">
-        {!gameProgress && (
-          <button className="ButtonPlay Button" onClick={handlePlay}>
-            PLAY
-          </button>
-          
-        )}
-        
-        {previousObject && extractedObject && (
-          <ButtonChoice
-            previousObject={previousObject.avg24hPrice}
-            extractedObject={extractedObject.avg24hPrice}
-            handlePlay={handlePlay}
-            endGame={endGame}
-            isLost={isLost}
-          />
-        )}
-       
-      </div>
+      {gameProgress && (
+        <div className="circle">
+          <span className="vs-text">VS</span>
+        </div>
+      )}
+      <div className="container">
+        <div className="Button-container">
+          {!gameProgress && (
+            <button className="ButtonPlay Button" onClick={handlePlay}>
+              PLAY
+            </button>
+          )}
 
-      {extractedObject && gameProgress && (
-        <div className="Item">
-          <div className="Text">
-            <h2 className="TextJmeno">{extractedObject.name}</h2>
-            <p className="Price">{extractedObject.avg24hPrice} ₽</p>
-            {/* <p>Short name: {extractedObject.shortName}</p>
+          {previousObject && extractedObject && (
+            <ButtonChoice
+              previousObject={previousObject.avg24hPrice}
+              extractedObject={extractedObject.avg24hPrice}
+              handlePlay={handlePlay}
+              endGame={endGame}
+              isLost={isLost}
+              showPrice={showPrice}
+            />
+          )}
+        </div>
+
+        {extractedObject && gameProgress && (
+          <div className="Item">
+            <div className="Text">
+              <h2 className="TextJmeno">{extractedObject.name}</h2>
+              {showPrice && (
+                <p className="Price">{extractedObject.avg24hPrice} ₽</p>
+              )}
+              {/* <p>Short name: {extractedObject.shortName}</p>
             <p>Avg 24h {extractedObject.avg24hPrice}</p>
              <p>ID: {extractedObject.id}</p>  */}
-            <a href={extractedObject.wikiLink} target="_blank" className="Wiki">
-              wiki
-            </a>
+              <a
+                href={extractedObject.wikiLink}
+                target="_blank"
+                className="Wiki"
+              >
+                wiki
+              </a>
+            </div>
+            <img
+              className="ImgItem"
+              src={`https://assets.tarkov.dev/${extractedObject.id}-512.webp`}
+              alt={extractedObject.name}
+            />
           </div>
-          <img
-            className="ImgItem"
-            src={`https://assets.tarkov.dev/${extractedObject.id}-512.webp`}
-            alt={extractedObject.name}
-          />
-        </div>
-      )}
-      {previousObject && gameProgress && (
-        <div className="Item">
-          <div className="Text">
-            <h2 className="TextJmeno">{previousObject.name}</h2>
-            {/* <p>Short name: {previousObject.shortName}</p> */}
-            <p className="Price">{previousObject.avg24hPrice} ₽</p>
-            {/* <p>ID: {previousObject.id}</p> */}
-            <a href={previousObject.wikiLink} target="_blank" className="Wiki">
-              wiki
-            </a>
+        )}
+        {previousObject && gameProgress && (
+          <div className="Item">
+            <div className="Text">
+              <h2 className="TextJmeno">{previousObject.name}</h2>
+              {/* <p>Short name: {previousObject.shortName}</p> */}
+              <p className="Price">{previousObject.avg24hPrice} ₽</p>
+              {/* <p>ID: {previousObject.id}</p> */}
+              <a
+                href={previousObject.wikiLink}
+                target="_blank"
+                className="Wiki"
+              >
+                wiki
+              </a>
+            </div>
+            <img
+              className="ImgItem"
+              src={`https://assets.tarkov.dev/${previousObject.id}-512.webp`}
+              alt={previousObject.name}
+            />
           </div>
-          <img
-            className="ImgItem"
-            src={`https://assets.tarkov.dev/${previousObject.id}-512.webp`}
-            alt={previousObject.name}
-          />
-        </div>
-      )}
-    </div>
+        )}
+      </div>
     </>
   );
 };
