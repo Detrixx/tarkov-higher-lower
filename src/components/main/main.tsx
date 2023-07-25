@@ -91,17 +91,27 @@ export const Main = () => {
     <>
       {gameProgress && (
         <div className="circle">
-          <span className="vs-text">VS</span>
+          <span className="vs-text animate__animated animate__bounceIn">
+            VS
+          </span>
         </div>
       )}
       <div className="container">
         <div className="Button-container">
-          {!gameProgress&& !isLost&& <><div className="MainText">Tarkov Higher Lower Game</div><div className="SecondaryText">Try to guess the average prices from the Tarkov flea market for the last 24 hours.</div></>}
+          {!gameProgress && !isLost && (
+            <>
+              <div className="MainText">Tarkov Higher Lower Game</div>
+              <div className="SecondaryText">
+                Try to guess the average prices from the Tarkov flea market for
+                the last 24 hours.
+              </div>
+            </>
+          )}
           {!gameProgress && (
             <div className="ButtonPlayP">
-            <button className="ButtonPlay Button" onClick={handlePlay}>
-              PLAY
-            </button>
+              <button className="ButtonPlay Button" onClick={handlePlay}>
+                PLAY
+              </button>
             </div>
           )}
 
@@ -122,7 +132,9 @@ export const Main = () => {
             <div className="Text">
               <h2 className="TextJmeno">{extractedObject.name}</h2>
               {showPrice && (
-                <p className="Price">{formatPriceWithSpaces(extractedObject.avg24hPrice)} ₽</p>
+                <p className="Price">
+                  {formatPriceWithSpaces(extractedObject.avg24hPrice)} ₽
+                </p>
               )}
               {/* <p>Short name: {extractedObject.shortName}</p>
             <p>Avg 24h {extractedObject.avg24hPrice}</p>
@@ -136,7 +148,7 @@ export const Main = () => {
               </a>
             </div>
             <img
-              className="ImgItem"
+              className="ImgItem animate__animated animate__fadeIn"
               src={`https://assets.tarkov.dev/${extractedObject.id}-512.webp`}
               alt={extractedObject.name}
             />
@@ -147,7 +159,9 @@ export const Main = () => {
             <div className="Text">
               <h2 className="TextJmeno">{previousObject.name}</h2>
               {/* <p>Short name: {previousObject.shortName}</p> */}
-              <p className="Price">{formatPriceWithSpaces(previousObject.avg24hPrice)} ₽</p>
+              <p className="Price">
+                {formatPriceWithSpaces(previousObject.avg24hPrice)} ₽
+              </p>
               {/* <p>ID: {previousObject.id}</p> */}
               <a
                 href={previousObject.wikiLink}
@@ -158,7 +172,7 @@ export const Main = () => {
               </a>
             </div>
             <img
-              className="ImgItem"
+              className="ImgItem animate__animated animate__fadeIn"
               src={`https://assets.tarkov.dev/${previousObject.id}-512.webp`}
               alt={previousObject.name}
             />

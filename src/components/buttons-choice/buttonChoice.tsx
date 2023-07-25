@@ -54,7 +54,7 @@ const ButtonChoice: React.FC<ButtonChoiceProps> = ({
       ) : (
         <>
           <Score score={score} />
-          <div className="ButtonGame">
+          <div className="ButtonGame animate__animated animate__zoomIn">
             <button
               onClick={higherClick}
               style={{ display: showPrice ? "none" : "flex" }}
