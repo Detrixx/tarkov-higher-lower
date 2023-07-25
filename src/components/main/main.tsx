@@ -23,6 +23,9 @@ export const Main = () => {
     useState<TarkovItemObject | null>(null);
 
   const tarkovItems = Items();
+  const formatPriceWithSpaces = (price: number) => {
+    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  };
 
   useEffect(() => {
     let timeoutId: NodeJS.Timeout;
@@ -93,10 +96,13 @@ export const Main = () => {
       )}
       <div className="container">
         <div className="Button-container">
+          {!gameProgress&& !isLost&& <><div className="MainText">Tarkov Higher Lower Game</div><div className="SecondaryText">Try to guess the average prices from the Tarkov flea market for the last 24 hours.</div></>}
           {!gameProgress && (
+            <div className="ButtonPlayP">
             <button className="ButtonPlay Button" onClick={handlePlay}>
               PLAY
             </button>
+            </div>
           )}
 
           {previousObject && extractedObject && (
@@ -116,7 +122,7 @@ export const Main = () => {
             <div className="Text">
               <h2 className="TextJmeno">{extractedObject.name}</h2>
               {showPrice && (
-                <p className="Price">{extractedObject.avg24hPrice} ₽</p>
+                <p className="Price">{formatPriceWithSpaces(extractedObject.avg24hPrice)} ₽</p>
               )}
               {/* <p>Short name: {extractedObject.shortName}</p>
             <p>Avg 24h {extractedObject.avg24hPrice}</p>
@@ -141,7 +147,7 @@ export const Main = () => {
             <div className="Text">
               <h2 className="TextJmeno">{previousObject.name}</h2>
               {/* <p>Short name: {previousObject.shortName}</p> */}
-              <p className="Price">{previousObject.avg24hPrice} ₽</p>
+              <p className="Price">{formatPriceWithSpaces(previousObject.avg24hPrice)} ₽</p>
               {/* <p>ID: {previousObject.id}</p> */}
               <a
                 href={previousObject.wikiLink}

@@ -47,7 +47,10 @@ const ButtonChoice: React.FC<ButtonChoiceProps> = ({
   return (
     <>
       {isLost ? (
-        <div>You lost your Score: {oldScore}</div>
+        <div className="Lost">
+        <div className="LText">You scored:</div><br/>
+        <div className="LScore">{oldScore}</div>
+        </div>
       ) : (
         <>
           <Score score={score} />
