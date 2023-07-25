@@ -150,6 +150,7 @@ export const Main = () => {
                 wiki
               </a>
             </div>
+            
             <img
               key={extractedObject.id}
               className="ImgItem animate__animated animate__zoomInUp"
