@@ -89,9 +89,9 @@ export const Main = () => {
 
   return (
     <>
-      {gameProgress && (
-        <div className="circle">
-          <span className="vs-text animate__animated animate__bounceIn">
+      {gameProgress && extractedObject &&(
+        <div key={extractedObject.avg24hPrice} className="circle animate__animated animate__zoomInRight">
+          <span className="vs-text animate__animated animate__zoomInRight">
             VS
           </span>
         </div>
@@ -135,7 +135,7 @@ export const Main = () => {
             <div className="Text">
               <h2 className="TextJmeno">{extractedObject.name}</h2>
               {showPrice && (
-                <p className="Price">
+                <p className="Price animate__animated animate__fadeIn">
                   {formatPriceWithSpaces(extractedObject.avg24hPrice)} ₽
                 </p>
               )}
@@ -162,12 +162,12 @@ export const Main = () => {
         {previousObject && gameProgress && (
           <div
             key={previousObject.id}
-            className="Item animate__animated animate__fadeInRightBig"
+            className="Item animate__animated animate__bounceInRight"
           >
             <div className="Text">
               <h2 className="TextJmeno">{previousObject.name}</h2>
               {/* <p>Short name: {previousObject.shortName}</p> */}
-              <p className="Price">
+              <p className="Price animate__animated animate__fadeIn">
                 {formatPriceWithSpaces(previousObject.avg24hPrice)} ₽
               </p>
               {/* <p>ID: {previousObject.id}</p> */}

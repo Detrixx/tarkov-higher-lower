@@ -47,7 +47,7 @@ body {
   width: 100vh;
   top: 50%;
   left: 50%;
-  transform: translate(-30%, 0%);
+  transform: translate(-31%, 0%);
   font-weight: bold;
   color:white
 }
@@ -227,12 +227,31 @@ body {
   }
   .Button{
     scale: 150%;
-    margin:15px
+    margin:25px
   }
   .ButtonGame{
     position: absolute;
-    top: 34vh;
+    top: 33vh;
     right: 42vh ; 
+  }
+  .MainText{
+    font-size: 50px;
+    position: absolute;
+    width: 100vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-24%, 0%);
+    font-weight: bold;
+    color:white
+  }
+  .SecondaryText{
+    font-size: 30px;
+    position: absolute;
+    width: 120vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-33%, 270%);
+    color:white
   }
  }
 
@@ -249,5 +268,24 @@ body {
     position: absolute;
     top: 36vh;
     right: 45vh ; 
+  }
+  .MainText{
+    font-size: 50px;
+    position: absolute;
+    width: 100vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-15%, 0%);
+    font-weight: bold;
+    color:white
+  }
+  .SecondaryText{
+    font-size: 30px;
+    position: absolute;
+    width: 120vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-20%, 270%);
+    color:white
   }
  }

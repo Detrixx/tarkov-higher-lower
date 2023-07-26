@@ -5,5 +5,5 @@ interface ScoreProps {
 }
 
 export const Score: React.FC<ScoreProps> = ({ score }) => {
-  return <div className="Score">Score: {score}</div>;
+  return <div key={score} className="Score animate__animated animate__bounceIn">Score: {score}</div>;
 };
