@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/tarkov-higher-lower/static/css/main.4f0b774c.css",
-    "main.js": "/tarkov-higher-lower/static/js/main.126b5521.js",
+    "main.css": "/tarkov-higher-lower/static/css/main.f1f0eaa7.css",
+    "main.js": "/tarkov-higher-lower/static/js/main.455588f8.js",
     "index.html": "/tarkov-higher-lower/index.html",
-    "main.4f0b774c.css.map": "/tarkov-higher-lower/static/css/main.4f0b774c.css.map",
-    "main.126b5521.js.map": "/tarkov-higher-lower/static/js/main.126b5521.js.map"
+    "main.f1f0eaa7.css.map": "/tarkov-higher-lower/static/css/main.f1f0eaa7.css.map",
+    "main.455588f8.js.map": "/tarkov-higher-lower/static/js/main.455588f8.js.map"
   },
   "entrypoints": [
-    "static/css/main.4f0b774c.css",
-    "static/js/main.126b5521.js"
+    "static/css/main.f1f0eaa7.css",
+    "static/js/main.455588f8.js"
   ]
 }
