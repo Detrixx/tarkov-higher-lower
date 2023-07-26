@@ -15,6 +15,8 @@ export const Main = () => {
   const [gameProgress, setGameProgress] = useState(false);
   const [oldId, setOldId] = useState(0);
   const [isLost, setIsLost] = useState(false);
+  const [greenSquare,setGreenSquare] = useState("Hide");
+  const [redSquare,setRedSquare] = useState("Hide");
   const [previousObject, setPreviousObject] = useState<TarkovItemObject | null>(
     null
   );
@@ -31,7 +33,6 @@ export const Main = () => {
     let timeoutId: NodeJS.Timeout;
     if (gameProgress) {
       timeoutId = setTimeout(() => {
-        //setShowPrice(true);
       }, 1000);
     }
 
@@ -48,20 +49,24 @@ export const Main = () => {
     }
     gameProgress && setShowPrice(true);
     setTimeout(() => {
+      setGreenSquare("Hide");
       setShowPrice(false);
       setIsLost(false);
       extractObject();
       setGameProgress(true);
     }, 1500);
+    gameProgress && setGreenSquare("");
   };
 
   const endGame = () => {
     setShowPrice(true);
     setTimeout(() => {
+      setRedSquare("Hide");
       setGameProgress(false);
       setIsLost(true);
       setShowPrice(false);
     }, 1500);
+    setRedSquare("");
   };
 
   const randomId = () => {
@@ -90,11 +95,15 @@ export const Main = () => {
   return (
     <>
       {gameProgress && extractedObject &&(
+        <>
+        <div className={`square squareRed ${redSquare} animate__animated animate__fadeIn`}>❌</div>
+        <div className={`square squareGreen ${greenSquare} animate__animated animate__fadeIn`}>✔</div>
         <div key={extractedObject.avg24hPrice} className="circle animate__animated animate__zoomInRight">
           <span className="vs-text animate__animated animate__zoomInRight">
             VS
           </span>
         </div>
+        </>
       )}
       <div className="container">
         <div className="Button-container">
@@ -139,9 +148,6 @@ export const Main = () => {
                   {formatPriceWithSpaces(extractedObject.avg24hPrice)} ₽
                 </p>
               )}
-              {/* <p>Short name: {extractedObject.shortName}</p>
-            <p>Avg 24h {extractedObject.avg24hPrice}</p>
-             <p>ID: {extractedObject.id}</p>  */}
               <a
                 href={extractedObject.wikiLink}
                 target="_blank"
@@ -166,11 +172,9 @@ export const Main = () => {
           >
             <div className="Text">
               <h2 className="TextJmeno">{previousObject.name}</h2>
-              {/* <p>Short name: {previousObject.shortName}</p> */}
               <p className="Price animate__animated animate__fadeIn">
                 {formatPriceWithSpaces(previousObject.avg24hPrice)} ₽
               </p>
-              {/* <p>ID: {previousObject.id}</p> */}
               <a
                 href={previousObject.wikiLink}
                 target="_blank"

@@ -18,7 +18,6 @@ const ButtonChoice: React.FC<ButtonChoiceProps> = ({
   isLost,
   showPrice,
 }) => {
-  // const [isLost, setIsLost] = useState(false);
   const [score, setScore] = useState(0);
   const [oldScore, setOldScore] = useState(0);
 

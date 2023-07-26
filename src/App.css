@@ -60,7 +60,31 @@ body {
   transform: translate(-43%, 270%);
   color:white
 }
-
+.square{
+width: 100px;
+height: 100px;
+display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  font-size: 40px;
+  border: solid 1px rgb(55, 54, 54);
+}
+.squareGreen{
+  background-color: green;
+  color: white;
+}
+.squareRed{
+  background-color: rgb(128, 0, 0);
+  color: red;
+}
+.Hide{
+  display: none;
+}
 .ButtonPlayP{
   position: absolute;
   top: 50%;
