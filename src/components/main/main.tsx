@@ -15,8 +15,8 @@ export const Main = () => {
   const [gameProgress, setGameProgress] = useState(false);
   const [oldId, setOldId] = useState(0);
   const [isLost, setIsLost] = useState(false);
-  const [greenSquare,setGreenSquare] = useState("Hide");
-  const [redSquare,setRedSquare] = useState("Hide");
+  const [greenSquare, setGreenSquare] = useState("Hide");
+  const [redSquare, setRedSquare] = useState("Hide");
   const [previousObject, setPreviousObject] = useState<TarkovItemObject | null>(
     null
   );
@@ -32,8 +32,7 @@ export const Main = () => {
   useEffect(() => {
     let timeoutId: NodeJS.Timeout;
     if (gameProgress) {
-      timeoutId = setTimeout(() => {
-      }, 1000);
+      timeoutId = setTimeout(() => {}, 1000);
     }
 
     return () => {
@@ -94,15 +93,26 @@ export const Main = () => {
 
   return (
     <>
-      {gameProgress && extractedObject &&(
+      {gameProgress && extractedObject && (
         <>
-        <div className={`square squareRed ${redSquare} animate__animated animate__fadeIn`}>❌</div>
-        <div className={`square squareGreen ${greenSquare} animate__animated animate__fadeIn`}>✔</div>
-        <div key={extractedObject.avg24hPrice} className="circle animate__animated animate__zoomInRight">
-          <span className="vs-text animate__animated animate__zoomInRight">
-            VS
-          </span>
-        </div>
+          <div
+            className={`square squareRed ${redSquare} animate__animated animate__fadeIn`}
+          >
+            ❌
+          </div>
+          <div
+            className={`square squareGreen ${greenSquare} animate__animated animate__fadeIn`}
+          >
+            ✔
+          </div>
+          <div
+            key={extractedObject.avg24hPrice}
+            className="circle animate__animated animate__zoomInRight"
+          >
+            <span className="vs-text animate__animated animate__zoomInRight">
+              VS
+            </span>
+          </div>
         </>
       )}
       <div className="container">
@@ -156,7 +166,7 @@ export const Main = () => {
                 wiki
               </a>
             </div>
-            
+
             <img
               key={extractedObject.id}
               className="ImgItem animate__animated animate__zoomInUp"

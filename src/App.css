@@ -42,23 +42,28 @@ body {
     z-index: 1
 }
 .MainText{
+
   font-size: 50px;
-  position: absolute;
+  font-weight: bold;
+  color:white;
+  text-align: center; /* This will center the text horizontally */
   width: 100vh;
+  position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-31%, 0%);
-  font-weight: bold;
-  color:white
+  transform: translate(-50%, -50%)
+
 }
 .SecondaryText{
+
   font-size: 30px;
-  position: absolute;
+  color:white;
+  text-align: center; /* This will center the text horizontally */
   width: 120vh;
+  position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-43%, 270%);
-  color:white
+  transform: translate(-50%, 190%)
 }
 .square{
 width: 100px;
@@ -259,23 +264,12 @@ display: flex;
     right: 42vh ; 
   }
   .MainText{
-    font-size: 50px;
-    position: absolute;
-    width: 100vh;
-    top: 50%;
-    left: 50%;
-    transform: translate(-24%, 0%);
-    font-weight: bold;
-    color:white
+    font-size: 60px;
+
   }
   .SecondaryText{
-    font-size: 30px;
-    position: absolute;
-    width: 120vh;
-    top: 50%;
-    left: 50%;
-    transform: translate(-33%, 270%);
-    color:white
+    font-size: 40px;
+
   }
  }
 
@@ -294,22 +288,11 @@ display: flex;
     right: 45vh ; 
   }
   .MainText{
-    font-size: 50px;
-    position: absolute;
-    width: 100vh;
-    top: 50%;
-    left: 50%;
-    transform: translate(-15%, 0%);
-    font-weight: bold;
-    color:white
+    font-size: 70px;
+
   }
   .SecondaryText{
-    font-size: 30px;
-    position: absolute;
-    width: 120vh;
-    top: 50%;
-    left: 50%;
-    transform: translate(-20%, 270%);
-    color:white
+    font-size: 50px;
+
   }
  }
