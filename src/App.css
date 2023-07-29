@@ -394,8 +394,9 @@ display: flex;
 }
 
 .Score{
-  top: 47vh;
+  top:calc(50vh - 25px);
    left: calc(0% - 0px); 
+   
 }
 
 .ButtonGame{
