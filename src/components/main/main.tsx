@@ -119,10 +119,11 @@ export const Main = () => {
         <div className="Button-container">
           {!gameProgress && !isLost && (
             <>
-              <div className="MainText">Tarkov Higher Lower Game</div>
+              <div className="MainText"><p>Tarkov Higher Lower Game</p></div>
               <div className="SecondaryText">
-                Try to guess the average prices from the Tarkov flea market for
-                the last 24 hours.
+                <p>
+                Try to guess the average prices from the Tarkov flea market for the last 24 hours.
+                </p>
               </div>
             </>
           )}

@@ -1,7 +1,7 @@
 html, body {
-  height: 100%; 
+  height: 100%;
   margin: 0;
-  
+
 }
 body {
   display: flex;
@@ -11,9 +11,12 @@ body {
 }
 .container{
     /* height: 100%; */
+  height: 100vh;
+  width: 100vw;
+
     display: flex;
     flex-direction: row-reverse;
-     align-items: center; 
+     align-items: center;
 }
 .Item {
     flex: 1;
@@ -25,8 +28,10 @@ body {
   width:  95vh;
   background-color: #151415;
 
-  }
+}
 .ImgItem{
+  margin-top: 1cm;
+  margin-bottom:0.5cm;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -36,34 +41,47 @@ body {
 
 }
 .Button-container{
-    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    position: absolute; 
-    margin-bottom: 40%; 
+  width: 100vw;
+  height: 100vh;
+
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    position: fixed;
+    left: 0%;
+    
+    /* margin-bottom: 40%; */
     z-index: 1
+
+  
 }
 .MainText{
-
   font-size: 50px;
-  font-weight: bold;
-  color:white;
   text-align: center; /* This will center the text horizontally */
-  width: 100vh;
   position: absolute;
-  top: 50%;
+  top: 15%;
   left: 50%;
-  transform: translate(-50%, -50%)
+  transform: translate(-50%, -50%);
+  white-space: pre-wrap; 
+}
 
+.MainText p{
+  top: 15%;
+  color:white;
+  padding: 0px 177px 0px;
+    font-weight: bold;
+    width:90vw;
+    min-width:300px;
 }
 .SecondaryText{
 
   font-size: 30px;
   color:white;
   text-align: center; /* This will center the text horizontally */
-  width: 120vh;
   position: absolute;
-  top: 50%;
+  top: 35%;
   left: 50%;
-  transform: translate(-50%, 190%)
+  width: 90vw;
+  transform: translate(-50%, -50%);
+  white-space: pre-wrap; 
 }
 .square{
 width: 100px;
@@ -91,27 +109,33 @@ display: flex;
   display: none;
 }
 .ButtonPlayP{
+  margin-top: 1px;
+
   position: absolute;
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, 900%);
+  left: 50%; 
+  transform: translate(-50%, -50%);
 
 }
 .Lost{
-  position: fixed;
-    top: 40%;
-    left: 50%;
+
+   position: absolute;
+    top: 30%;
+    left: 50%; 
+
     transform: translate(-50%, -50%);
+    text-align: center;
     display: table-column;
     justify-self: center;
     font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-weight: bold;
     color:white
-    
+
 }
 
 .LText{
   font-size: 50px;
+  width: 95vw;
 }
 .LScore{
   display: flex;
@@ -121,31 +145,37 @@ display: flex;
 }
 
 .Score{
-  position: absolute;
-  top: 85vh;
-  right: 0vh;
+  position: fixed;
+  top: calc(100% - 50px);
+  left: calc(100% - 150px);
+  transform: translate(-100%,-100%);
+  
   width: 150px;
+  height: 50px;
   font-size: 34px;
   color: white;
 }
 
 .Price{
     position: absolute;
-    top: 75%;
+    margin-top: 0.5cm;
+    top: 85%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: #d2cf13;
     padding: 10px;
     white-space: nowrap;
-    font-size: 140px;
+    font-size: 90px;
     z-index: 1
 }
 
 .TextJmeno {
+    text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 40px;
+    margin-bottom: 1cm;
   }
   .Text{
     color:white;
@@ -154,11 +184,10 @@ display: flex;
 
   .Wiki{
     position: absolute;
-    top: 99%;
-    left: 98%;
-    transform: translate(-50%, -50%);
+    top: 100%;
+    left: 100%;
+    transform: translate(-100%, -100%);
     color: #1316d2;
-    padding: 10px;
     white-space: nowrap;
     font-size: 17px;
     z-index: 1
@@ -168,35 +197,36 @@ display: flex;
 .Button {
     width: 150px;
     height: 100px;
-  align-items: center;
-  appearance: none;
-  
-  background-color: #1af15b;
-  background-image: linear-gradient(1deg, #1af15b, #19a63c 99%);
-  background-size: calc(100% + 20px) calc(100% + 20px);
-  border-radius: 100px;
-  border-width: 0;
-  box-shadow: none;
-  box-sizing: border-box;  
-  color: #ffffff;
-  cursor: pointer;
-  display: inline-flex;
-  font-family: CircularStd,sans-serif;
-  font-size: 1rem;
-  height: auto;
-  justify-content: center;
-  line-height: 1.5;
-  margin: 4px; 
-  padding: 6px 20px;
-  position: relative;
-  text-align: center;
-  text-decoration: none;
-  transition: background-color .2s,background-position .2s;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  vertical-align: top;
-  white-space: nowrap;
+    align-items: center;
+    
+    appearance: none;
+
+    background-color: #1af15b;
+    background-image: linear-gradient(1deg, #1af15b, #19a63c 99%);
+    background-size: calc(100% + 20px) calc(100% + 20px);
+    border-radius: 100px;
+    border-width: 0;
+    box-shadow: none;
+    box-sizing: border-box;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: CircularStd,sans-serif;
+    font-size: 1rem;
+    height: auto;
+    justify-content: center;
+    line-height: 1.5;
+    margin: 4px;
+    padding: 6px 20px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color .2s,background-position .2s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: top;
+    white-space: nowrap;
 }
 
 .Button:active,
@@ -212,14 +242,23 @@ display: flex;
   box-shadow: rgba(40, 255, 108, 0.25) 0 0 0 .125em;
 }
 
+.ButtonGame div{
+  width: 2vw;
+  height: 2vh;
+  transform: translate(-50%,-50%);
+}
+
 .ButtonGame{
-   position: absolute;
-  top: 35vh;
-  right: 42vh ; 
+  width: 10vw;
+  height: 10vh;
+  position: absolute;
+  top: 45vh;
+  left: 70vw;
 }
 .ButtonGame button{
   background-color: rgba(0, 0, 0, 0.05);
   background-image: none;
+
   border: solid 3px green;
 }
 .ButtonGame Button:hover {
@@ -246,30 +285,211 @@ display: flex;
   font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
+ @media (max-width: 1200px) {
+   body {
+     font-size: 80%;
+    }
+    
+  .Price {
+    font-size: 55px;
+  }
+  .Button{
+    scale: 100%;
+    margin: 4%
+  }
+  
+  .MainText {
+    font-size: 50px;
+    top: 20%;
+  
+
+  }
+  .SecondaryText {
+    font-size: 30px;
+    top: 35%;
+    
+  }
+ }
+
+ @media (max-width: 800px) {
+  body {
+    font-size: 60%;
+  }
+
+  .TextJmeno{
+    font-size: 30px;
+  }
+
+  .Price {
+    font-size: 40px;
+  }
+
+  .Button{  
+    scale: 100%;
+    margin: 4px;
+  }
+  
+  .MainText p{
+    font-size: 40px;
+    top: 15%;
+
+  }
+  .SecondaryText {
+    font-size: 25px;
+    top: 35%;
+    
+  }
+ }
+
+ @media (max-width: 600px) {
+  body {
+    font-size: 60%;
+  }
+  
+.ImgItem{
+  margin-top: 1cm;
+  margin-bottom:0.5cm;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-height: 40%;
+
+}
+
+  .Button-container{
+    width: 100%;
+    height: 100%;
+  
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    position: fixed ;
+    left: 0%;
+    top: 0%;
+      
+      /* margin-bottom: 40%; */
+      z-index: 1
+  
+    
+  }
+
+  .Item {
+    flex: 1;
+    /* height: 100%; */
+  margin: 20px;
+  position: relative;
+  /* border: solid 1px #19a63c; */
+  height: 100%;
+  width: 100%;
+  background-color: #151415;
+
+}
+  .container{
+
+    height: 100vh;
+    width: 100vw;
+  
+    display: flex;
+    flex-direction: column-reverse;
+     align-items: center;
+}
+
+
+.TextJmeno{
+  font-size: 25px;
+  margin-bottom:5px;
+}
+
+.Score{
+  top: 95%;
+  left: calc(50% - 75px);
+}
+
+.ButtonGame{
+   width: 10vw;
+   height: 10vh;
+   
+   position: absolute;
+   top: 70vh;
+   left: 35vw;
+}
+  .Price {
+    font-size: 50px;
+    top: 82%;
+  }
+  .Button{
+    scale: 100%;
+    margin:4px
+  }
+  
+  .MainText p{
+    font-size: 30px;
+    top: 15%;
+
+  }
+  .SecondaryText {
+    font-size: 15px;
+    top: 35%;
+    
+  }
+
+
+ }
+
+ @media (max-width: 350px) {
+  body {
+    font-size: 60%;
+  }
+
+  .ButtonGame{
+    width: 10vw;
+    height: 10vh;
+    
+    position: absolute;
+    top: calc(70vh);
+    left: calc(25vw);
+  }
+
+  .Price {
+    font-size: 40px;
+  }
+  .Button{
+    scale: 100%;
+    margin: 4px;
+  }
+  
+  .MainText p{
+    font-size: 30px;
+    top: 15%;
+
+  }
+  .SecondaryText {
+    font-size: 15px;
+    top: 35%;
+    
+  }
+ }
+
  @media (min-width: 2560px) {
   body {
     font-size: 150%;
   }
-
+  .TextJmeno{
+    font-size: 65px;
+  }
   .Price {
-    font-size: 180px;
+    font-size: 150px;
   }
   .Button{
     scale: 150%;
-    margin:25px
+    margin: 25px;
   }
-  .ButtonGame{
-    position: absolute;
-    top: 33vh;
-    right: 42vh ; 
-  }
-  .MainText{
+  
+  .MainText {
     font-size: 60px;
-
   }
-  .SecondaryText{
+  .SecondaryText {
     font-size: 40px;
-
+    
   }
  }
 
@@ -280,13 +500,9 @@ display: flex;
   }
 
   .Price {
-    font-size: 220px;
+    font-size: 200px;
   }
-  .ButtonGame{
-    position: absolute;
-    top: 36vh;
-    right: 45vh ; 
-  }
+ 
   .MainText{
     font-size: 70px;
 
@@ -294,5 +510,8 @@ display: flex;
   .SecondaryText{
     font-size: 50px;
 
+  }
+  .TextJmeno{
+    font-size: 70px;
   }
  }

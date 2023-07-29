@@ -28,6 +28,7 @@ export const Items = () => {
         id
         name
         shortName
+        types
         iconLink
       avg24hPrice
       wikiLink
