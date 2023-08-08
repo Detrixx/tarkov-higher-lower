@@ -46,10 +46,16 @@ const ButtonChoice: React.FC<ButtonChoiceProps> = ({
   return (
     <>
       {isLost ? (
+        <>
         <div className="Lost">
         <div className="LText">You scored:</div><br/>
         <div className="LScore">{oldScore}</div>
         </div>
+        <div className="AddToLeaderboard">
+        <button className="Button">SAVE SCORE</button>
+        <input></input>
+        </div>
+        </>
       ) : (
         <>
           <Score score={score} />

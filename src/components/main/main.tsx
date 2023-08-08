@@ -127,10 +127,10 @@ export const Main = () => {
               </div>
             </>
           )}
-          {!gameProgress && (
+          {(!gameProgress || isLost) && (
             <div className="ButtonPlayP">
               <button className="ButtonPlay Button" onClick={handlePlay}>
-                PLAY
+                {!isLost ? "PLAY" : "PLAY AGAIN" }
               </button>
             </div>
           )}
