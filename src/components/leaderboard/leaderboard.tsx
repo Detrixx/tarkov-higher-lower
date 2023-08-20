@@ -49,7 +49,6 @@ export const Leaderboard = () => {
                 <td>{entry.name}</td>
                 <td>{entry.score}</td>
               </tr>
-           
           ))}
            </tbody>
       </table>
