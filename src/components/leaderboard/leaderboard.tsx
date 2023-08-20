@@ -30,7 +30,7 @@ export const Leaderboard = () => {
 
   return (
     <div>
-      <table>
+      <table className="table table-dark">
         <thead>
           <tr>
             <th scope="col">#</th>

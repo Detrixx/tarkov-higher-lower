@@ -74,7 +74,6 @@ const ButtonChoice: React.FC<ButtonChoiceProps> = ({
       setScore(score + 1);
       handlePlay();
     } else {
-      console.log("špatně");
       endGame();
       setOldScore(score);
       setScore(0);
@@ -91,15 +90,16 @@ const ButtonChoice: React.FC<ButtonChoiceProps> = ({
             <div className="LScore">{oldScore}</div>
           </div>
           <div className="AddToLeaderboard">
-            <button className="Button" onClick={saveScore}>
-              SAVE SCORE
-            </button>
-            <input
+          <input
               placeholder="Name..."
               onChange={(event) => {
                 setNewName(event.target.value);
               }}
             ></input>
+            <button className="Button" onClick={saveScore}>
+              SAVE SCORE
+            </button>
+            
           </div>
         </>
       ) : (
