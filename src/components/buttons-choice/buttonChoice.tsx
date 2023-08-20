@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Score } from "../score/score";
+import { addDoc, collection, doc, getDocs, query, updateDoc, where } from "firebase/firestore";
+import { db } from "../../firebase-config";
+import { useNavigate } from "react-router-dom";
 
 interface ButtonChoiceProps {
   previousObject: number;
@@ -20,7 +23,42 @@ const ButtonChoice: React.FC<ButtonChoiceProps> = ({
 }) => {
   const [score, setScore] = useState(0);
   const [oldScore, setOldScore] = useState(0);
+  const [newName, setNewName] = useState("");
 
+  const navigate= useNavigate();
+  const leaderBoardRef = collection(db, "leaderboard");
+  
+  const saveScore = async () => {
+    if (newName.trim() === "") {
+      alert("Name is required");
+      return;
+    }
+    const querySnapshot = await getDocs(
+      query(leaderBoardRef, where('name', '==', newName),where('score','>=',oldScore))
+    );
+    if (querySnapshot.size > 0) {
+      console.log('Name already exists in leaderboard. A score je větší ');
+      return;
+    }
+    const querySnapshot2 = await getDocs(
+      query(leaderBoardRef, where('name', '==', newName))
+    );
+
+    if (querySnapshot2.size > 0) {
+      const documentIdToUpdate = querySnapshot2.docs[0].id;
+      const userDoc = doc(db,"leaderboard",documentIdToUpdate)
+      const newFields = {score: oldScore}
+      await updateDoc(userDoc,newFields);
+      console.log('Name already exists in leaderboard. ');
+      navigate("/leaderboard");
+      return;
+    }
+
+    await addDoc(leaderBoardRef, { name: newName, score: oldScore });
+    navigate("/leaderboard");
+  
+
+  };
   const higherClick = () => {
     if (extractedObject >= previousObject) {
       setScore(score + 1);
@@ -47,14 +85,22 @@ const ButtonChoice: React.FC<ButtonChoiceProps> = ({
     <>
       {isLost ? (
         <>
-        <div className="Lost">
-        <div className="LText">You scored:</div><br/>
-        <div className="LScore">{oldScore}</div>
-        </div>
-        <div className="AddToLeaderboard">
-        <button className="Button">SAVE SCORE</button>
-        <input></input>
-        </div>
+          <div className="Lost">
+            <div className="LText">You scored:</div>
+            <br />
+            <div className="LScore">{oldScore}</div>
+          </div>
+          <div className="AddToLeaderboard">
+            <button className="Button" onClick={saveScore}>
+              SAVE SCORE
+            </button>
+            <input
+              placeholder="Name..."
+              onChange={(event) => {
+                setNewName(event.target.value);
+              }}
+            ></input>
+          </div>
         </>
       ) : (
         <>

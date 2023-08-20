@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Items } from "../items/items";
 import React from "react";
 import ButtonChoice from "../buttons-choice/buttonChoice";
+import { useNavigate } from "react-router-dom";
 
 interface TarkovItemObject {
   id: number;
@@ -12,6 +13,7 @@ interface TarkovItemObject {
 }
 
 export const Main = () => {
+  const navigate = useNavigate();
   const [gameProgress, setGameProgress] = useState(false);
   const [oldId, setOldId] = useState(0);
   const [isLost, setIsLost] = useState(false);
@@ -132,6 +134,7 @@ export const Main = () => {
               <button className="ButtonPlay Button" onClick={handlePlay}>
                 {!isLost ? "PLAY" : "PLAY AGAIN" }
               </button>
+              <button className="Button" onClick={()=>navigate("/leaderBoard")}>LEADERBOARD</button>
             </div>
           )}
 
