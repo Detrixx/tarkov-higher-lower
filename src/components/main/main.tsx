@@ -134,7 +134,7 @@ export const Main = () => {
               <button className="ButtonPlay Button" onClick={handlePlay}>
                 {!isLost ? "PLAY" : "PLAY AGAIN" }
               </button>
-              <button className="Button" onClick={()=>navigate("/leaderBoard")}>LEADERBOARD</button>
+              <button className="Button BLeaderboard" onClick={()=>navigate("/leaderBoard")}>LEADERBOARD</button>
             </div>
           )}
 

@@ -33,11 +33,15 @@ const ButtonChoice: React.FC<ButtonChoiceProps> = ({
       alert("Name is required");
       return;
     }
+    else if(newName.length > 25){
+      alert("The provided appellation exceeds acceptable length parameters.");
+      return;
+    }
     const querySnapshot = await getDocs(
       query(leaderBoardRef, where('name', '==', newName),where('score','>=',oldScore))
     );
     if (querySnapshot.size > 0) {
-      console.log('Name already exists in leaderboard. A score je větší ');
+      alert("Name already exists in the leaderboard. To overwrite it you need to score higher!");
       return;
     }
     const querySnapshot2 = await getDocs(

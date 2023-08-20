@@ -29,8 +29,9 @@ export const Leaderboard = () => {
   }, []);
 
   return (
-    <div>
-      <table className="table table-dark">
+    <>
+    <div className="Leaderboard">
+      <table className="data-table">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -38,21 +39,25 @@ export const Leaderboard = () => {
             <th scope="col">Score</th>
           </tr>
         </thead>
+        <tbody>
         {leaderBoard
           ?.sort((a, b) => b.score - a.score)
           .map((entry, index) => (
-            <tbody>
+            
               <tr>
                 <th scope="row">{index + 1}</th>
                 <td>{entry.name}</td>
                 <td>{entry.score}</td>
               </tr>
-            </tbody>
+           
           ))}
+           </tbody>
       </table>
-      <button className="Button" onClick={() => navigate("/")}>
-        Back
-      </button>
+    
     </div>
+      <button className="Button BBack" onClick={() => navigate("/")}>
+      Back
+    </button>
+    </>
   );
 };
