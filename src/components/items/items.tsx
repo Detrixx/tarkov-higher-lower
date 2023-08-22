@@ -5,6 +5,7 @@ interface ItemsIn {
   shortName: string;
   iconLink: string;
   avg24hPrice: number;
+  lastLowPrice: number;
   wikiLink: string;
 }
 
@@ -31,6 +32,7 @@ export const Items = () => {
         types
         iconLink
       avg24hPrice
+      lastLowPrice
       wikiLink
     }
 }`,
@@ -51,7 +53,8 @@ export const Items = () => {
       id: item.id,
       name: item.name,
       shortName: item.shortName,
-      avg24hPrice: item.avg24hPrice,
+      //avg24hPrice: item.avg24hPrice,
+      avg24hPrice: item.lastLowPrice,
       wikiLink: item.wikiLink,
   }
   });
