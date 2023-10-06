@@ -356,6 +356,10 @@ input::placeholder {
    body {
      font-size: 80%;
     }
+    .AddToLeaderboard{
+      position: absolute;
+      top: 70vh;
+    }
     .data-table {
       font-size: 30px;
       width: 70%;
@@ -384,6 +388,10 @@ input::placeholder {
  @media (max-width: 800px) {
   body {
     font-size: 60%;
+  }
+  .AddToLeaderboard{
+    position: absolute;
+    top: 70vh;
   }
   .data-table {
     font-size: 30px;
@@ -419,6 +427,10 @@ input::placeholder {
  @media (max-width: 600px) {
   body {
     font-size: 60%;
+  }
+  .AddToLeaderboard{
+    position: absolute;
+    top: 70vh;
   }
   .data-table {
     font-size: 20px;
@@ -515,6 +527,10 @@ input::placeholder {
  @media (max-width: 350px) {
   body {
     font-size: 60%;
+  }
+  .AddToLeaderboard{
+    position: absolute;
+    top: 70vh;
   }
   .data-table {
     font-size: 17px;
